@@ -60,7 +60,11 @@ class JoinActivity : AppCompatActivity() {
 
                             //회원가입 성공후 화면전환
                             val intent = Intent(this, MainActivity::class.java)
+                            //인텐트 후 기존의 정보를 날림(뒤로가기 시 회원가입으로 돌아오지 않도록)
+                            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
                             startActivity(intent)
+
+
                         } else {
                             // If sign in fails, display a message to the user.
                             Toast.makeText(this, "실패", Toast.LENGTH_SHORT).show()
